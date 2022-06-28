@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+spec: 
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: {{ .Values.name }}
+  template: 
+    metadata: 
+      labels: 
+        app: {{ .Values.name }}
+    spec: 
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
+        env:
+        - name: MONGODB_URL
+          value: {{ .Values.deployment.MONGODB_URL }}
+        resources: 
+          limits: 
+            cpu: {{ .Values.deployment.resources.limits.cpu }}
+            memory: {{ .Values.deployment.resources.limits.memory }}
+          requests: 
+            cpu: {{ .Values.deployment.resources.requests.cpu }}
+            memory: {{ .Values.deployment.resources.requests.memory}}
+        ports:
+        - containerPort: {{ .Values.deployment.containerPort }}    
+      

@@ -1,5 +1,5 @@
 apiVersion: v2
-name: blitzigo-ui-dev
+name: aks_ui_demo
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.

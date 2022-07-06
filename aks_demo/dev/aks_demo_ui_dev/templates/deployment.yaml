@@ -17,8 +17,8 @@ spec:
       - name: {{ .Values.name }}
         image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
         env:
-        - name: MONGODB_URL
-          value: {{ .Values.deployment.MONGODB_URL }}
+        # - name: MONGODB_URL
+        #   value: {{ .Values.deployment.MONGODB_URL }}
         resources: 
           limits: 
             cpu: {{ .Values.deployment.resources.limits.cpu }}

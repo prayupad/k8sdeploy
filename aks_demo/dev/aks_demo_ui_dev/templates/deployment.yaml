@@ -16,7 +16,8 @@ spec:
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
-        env:
+        imagePullPolicy: Never
+        #env:
         # - name: MONGODB_URL
         #   value: {{ .Values.deployment.MONGODB_URL }}
         resources: 

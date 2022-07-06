@@ -1,6 +1,6 @@
 ###deployment values
 deployment:
-  image: "blitzigonpacr.azurecr.io/blitzigoui"
+  image: "testuguqgwacr.azurecr.io/frontendui"
   tag: "20220417.1"
   containerPort: 80
   resources:
@@ -10,12 +10,12 @@ deployment:
     requests:
       cpu: "800m"
       memory: "800M"      
-  MONGODB_URL: "mongodb://testUser:pwd@172.22.64.4:27017/test"
+  #MONGODB_URL: "mongodb://testUser:pwd@172.22.64.4:27017/test"
   
   
 ########## common values
-name: "blitzigoui"
-namespace: "blitzigo-nspace-d-01"
+name: "frontendui"
+namespace: "aksdemo-nspace-d-01"
 
 
 

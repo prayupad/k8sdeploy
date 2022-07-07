@@ -1,0 +1,60 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hireplusplus-ui-ingress
+  namespace: hireplusplus-nspace-d-01
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # nginx.ingress.kubernetes.io/auth-type: basic
+    # nginx.ingress.kubernetes.io/auth-secret: basic-auth
+    #nginx.ingress.kubernetes.io/auth-realm: "hireplusplus"
+spec:
+  rules:
+  - host: "dev.hireplusplus.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: /aiservice/(.*)
+        backend:
+          service: 
+            name: aiservice
+            port:
+              number: 8086
+      # - pathType: Prefix
+      #   path: /scheduler/(.*)
+      #   backend:
+      #     service: 
+      #       name: scheduler
+      #       port:
+      #         number: 8085
+      # - pathType: Prefix
+      #   path: /commservice/(.*)
+      #   backend:
+      #     service: 
+      #       name: commservice
+      #       port:
+      #         number: 8084
+      - pathType: Prefix
+        path: /accmanagerservice/(.*)
+        backend:
+          service: 
+            name: accmanagerservice
+            port:
+              number: 8083
+      - pathType: Prefix          
+        path: /(.*)
+        backend:
+          service: 
+            name: hireplusplusui
+            port:
+              number: 80
+  tls: 
+  - hosts:
+    - dev.hireplusplus.com
+    secretName: hireplusplus-dev-tls
+
+

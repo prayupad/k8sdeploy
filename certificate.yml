@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: hireplusplus-dev-tls
-  namespace: hireplusplus-nspace-d-01
+  name: aks-demo-tls
+  namespace: aksdemo-nspace-d-01
 spec:
   dnsNames:
-    - dev.hireplusplus.com
-  secretName: hireplusplus-dev-tls
+    - frontend.52.188.222.60.nip.io
+  secretName: aks-demo-tls-secret
   issuerRef:
     name: letsencrypt-cluster-issuer
     kind: ClusterIssuer

@@ -1,7 +1,7 @@
 ###deployment values
 deployment:
   image: "testuguqgwacr.azurecr.io/frontendui"
-  tag: "20220417.1"
+  tag: "20220706.2"
   containerPort: 80
   resources:
     limits:
